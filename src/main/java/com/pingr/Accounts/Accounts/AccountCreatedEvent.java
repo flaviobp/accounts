@@ -36,4 +36,30 @@ public class AccountCreatedEvent {
                 accountMapView
         );
     }
+
+    public static AccountCreatedEvent of(String eventType, Account account) {
+        Map<String, Object> accountMapView = new HashMap<>();
+
+        accountMapView.put("id", account.getId());
+        accountMapView.put("username", account.getUsername());
+        accountMapView.put("email", account.getEmail());
+
+        return new AccountCreatedEvent(
+                eventType,
+                account.getId(),
+                accountMapView
+        );
+    }
+
+    public static AccountCreatedEvent of(String eventType, Long id) {
+        Map<String, Object> accountMapView = new HashMap<>();
+
+        accountMapView.put("id", id);
+
+        return new AccountCreatedEvent(
+                eventType,
+                id,
+                accountMapView
+        );
+    }
 }

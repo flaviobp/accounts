@@ -21,4 +21,16 @@ public class AccountController {
 
         return this.service.createAccount(account);
     }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Account updateOneAccount(@PathVariable("id") Long id, @RequestBody Account account){
+        return this.service.updateAccount(id, account);
+    }
+
+    @DeleteMapping(path ={"/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteOneAccount(@PathVariable Long id) {
+        this.service.deleteAccount(id);
+    }
 }
